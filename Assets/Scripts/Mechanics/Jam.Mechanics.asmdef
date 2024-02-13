@@ -1,0 +1,16 @@
+{
+    "name": "Jam.Mechanics",
+    "rootNamespace": "Jam",
+    "references": [
+        "GUID:e1779c9f4b637dc428e0acb0fd2ebeef"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
