@@ -2,7 +2,8 @@
     "name": "Jam.Mechanics",
     "rootNamespace": "Jam",
     "references": [
-        "GUID:e1779c9f4b637dc428e0acb0fd2ebeef"
+        "GUID:e1779c9f4b637dc428e0acb0fd2ebeef",
+        "GUID:02238eab3906a014c87fa14ee157d03b"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,3 +1,4 @@
+using Jam.Mechanics.Score;
 using UnityEngine;
 
 namespace Jam.Mechanics.Player
@@ -7,20 +8,25 @@ namespace Jam.Mechanics.Player
         [SerializeField]
         private PlayerVehicle _playerVehiclePrefab;
         private PlayerVehicle PlayerVehiclePrefab => _playerVehiclePrefab;
-        
-        private PlayerVehicle Player { get; set; }
-        
+
         private Camera _cachedCamera;
         private Camera CachedCamera => _cachedCamera ??= Camera.main;
 
+        private PlayerVehicle Player { get; set; }
+        private MoneyManager MoneyManager { get; set; }
+
         private Plane FloorPlane { get; set; }
 
-        public void Activate()
+        public void Activate(GameManager gameManager, MoneyManager moneyManager)
         {
             PlayerVehicle playerVehicle = Instantiate(PlayerVehiclePrefab, Vector3.zero, Quaternion.identity);
-            playerVehicle.name = "Player";
+            playerVehicle.Activate("Player", RegisterEnemyCollision, RegisterMoneyCollision);
             Player = playerVehicle;
+
             FloorPlane = new Plane(Vector3.up, Vector3.zero);
+
+            MoneyManager = moneyManager;
+            gameManager.LevelStartEvent += () => { Player.ResetTransform(); };
         }
 
         private void Update()
@@ -35,11 +41,18 @@ namespace Jam.Mechanics.Player
 
         private void RegisterClick(Vector3 clickLocation)
         {
-            if(clickLocation.magnitude > GameManager.PlayAreaRadius)
+            if (clickLocation.magnitude > GameManager.PlayAreaInner)
             {
-                clickLocation = clickLocation.normalized * GameManager.PlayAreaRadius;
+                clickLocation = clickLocation.normalized * GameManager.PlayAreaInner;
             }
+
             Player.SetMoveLocation(clickLocation);
         }
+
+        private void RegisterEnemyCollision() =>
+            MoneyManager.CurrentScore -= 10000;
+
+        private void RegisterMoneyCollision(int money) =>
+            MoneyManager.CurrentScore += money;
     }
 }
