@@ -51,7 +51,7 @@ namespace Jam.Mechanics.Score
         public static int HighScore
         {
             get => PlayerPrefs.GetInt("HighScore", 0);
-            set
+            private set
             {
                 if (value > HighScore)
                     PlayerPrefs.SetInt("HighScore", value);
@@ -63,7 +63,7 @@ namespace Jam.Mechanics.Score
         {
             MoneyHolderTransform = new GameObject("MoneyHolder").transform;
             MaxMoneyIndexWithSkew = Mathf.Pow(MoneyMeshes.Length, LowerValueSkew);
-            gameManager.LevelStartEvent += () => { CurrentScore = 0; };
+            gameManager.LevelStartEvent += LevelStart;
             gameManager.LevelEndEvent += LevelEnd;
         }
 
@@ -79,6 +79,12 @@ namespace Jam.Mechanics.Score
             Vector3 spawnLocation = new(randomLocation.x, 0.5f, randomLocation.y); //Spawns off the ground to account for oscillating movement
             ItemMoney money = MoneyPool.Get();
             money.Activate(MoneyMeshes[itemIndex], MoneyValues[itemIndex], spawnLocation);
+        }
+
+        private void LevelStart()
+        {
+            CurrentTimer = SpawnRate;
+            CurrentScore = 0;
         }
 
         private void LevelEnd()

@@ -29,6 +29,7 @@ namespace Jam.Mechanics.Player
             MoneyManager = moneyManager;
             gameManager.LevelStartEvent += () => { Player.ResetTransform(); };
             EffectSpawner = GetComponent<PlayerEffectSpawner>();
+            EffectSpawner.Activate();
         }
 
         private void Update()
