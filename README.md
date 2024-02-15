@@ -1,7 +1,7 @@
 ﻿# Traffic Jame
 Project began 12th Feb 2024 - 19:30  
-Should work on Android and Windows
+Probably spent a good day or so on it making it needlessly in depth when it should have been like 5 hours work top lol
 
 
 Potential bugs:  
-Can turn endlessly but it's not really an issue. Could probably fix using the dot product to only turn when needed, but that would be more costly.
+Can turn endlessly if clicking in adjacent, but it's not really an issue. Could probably fix using the dot product to only turn when needed, but that would be more costly.

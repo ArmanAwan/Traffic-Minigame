@@ -62,6 +62,7 @@ namespace Jam.UserInterface
             SwitchCanvas(CanvasName.Start);
         }
 
+        //TODO: Consider actually switching canvases rather than elements
         private void SwitchCanvas(CanvasName canvasName)
         {
             switch (canvasName)
