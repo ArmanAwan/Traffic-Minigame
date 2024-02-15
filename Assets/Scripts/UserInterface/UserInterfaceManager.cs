@@ -52,7 +52,7 @@ namespace Jam.UserInterface
 
         private void ScoreUpdated(int newScore)
         {
-            ScoreText.text = "Score: " + newScore.ToString("D" + 5);
+            ScoreText.text = "Money: " + newScore.ToString("D" + 5);
         }
         
         private async void LevelEnd()

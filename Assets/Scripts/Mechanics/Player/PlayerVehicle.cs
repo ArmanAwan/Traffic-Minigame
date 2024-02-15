@@ -1,5 +1,6 @@
 using System;
 using Jam.Effects;
+using Jam.Mechanics.Money;
 using UnityEngine;
 
 namespace Jam.Mechanics.Player
@@ -21,9 +22,9 @@ namespace Jam.Mechanics.Player
         private Vector3 MoveLocation { get; set; }
         private Quaternion TargetRotation { get; set; }
 
-        private Action EnemyCollisionCallback { get; set; }
-        private Action<int> MoneyCollisionCallback { get; set; }
-        public void Activate(string newName, Action enemyHitCallback, Action<int> moneyCollisionCallback)
+        private Action<Collider> EnemyCollisionCallback { get; set; }
+        private Action<Collider, int> MoneyCollisionCallback { get; set; }
+        public void Activate(string newName, Action<Collider> enemyHitCallback, Action<Collider, int> moneyCollisionCallback)
         {
             gameObject.name = newName;
             EnemyCollisionCallback = enemyHitCallback;
@@ -51,14 +52,14 @@ namespace Jam.Mechanics.Player
             switch (otherCollider.gameObject.layer)
             {
                 case 7:
-                    EnemyCollisionCallback?.Invoke();
+                    EnemyCollisionCallback?.Invoke(otherCollider);
                     break;
                 case 8:
                 {
                     ItemMoney money;
                     if(money = otherCollider.GetComponent<ItemMoney>())
                     {
-                        MoneyCollisionCallback?.Invoke(money.MoneyValue);
+                        MoneyCollisionCallback?.Invoke(otherCollider, money.MoneyValue);
                     }
                     break;
                 }

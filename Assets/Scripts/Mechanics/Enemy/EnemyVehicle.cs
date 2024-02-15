@@ -24,9 +24,7 @@ namespace Jam.Mechanics.Enemy
         {
             Move();
             if (transform.position.magnitude > GameManager.PlayAreaOuter)
-            {
-                DeathEffect();
-            }
+                EnemyPool.Release(this);
         }
 
         public void Activate(Vector3 spawnPoint)
@@ -37,15 +35,7 @@ namespace Jam.Mechanics.Enemy
             float randomAngle = angleToCentre + Random.Range(-Mathf.PI / 4, Mathf.PI / 4);
             transform.rotation = Quaternion.Euler(0,Mathf.Rad2Deg * randomAngle,0);
         }
-        private void OnTriggerEnter(Collider other)
-        {
-            DeathEffect();
-        }
-
-        private void DeathEffect()
-        {
+        private void OnTriggerEnter(Collider other) =>
             EnemyPool.Release(this);
-            //TODO: Make effect
-        }
     }
 }

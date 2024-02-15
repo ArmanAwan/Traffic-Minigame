@@ -18,8 +18,8 @@ namespace Jam.Mechanics
         
         public const float PlayAreaInner = 9.5f;
         public const float PlayAreaOuter = 12.5f;
-        public static bool GameIsRunning { get; private set; } //TODO Remove default
-        public float LevelTimer;
+        public static bool GameIsRunning { get; private set; }
+        public float LevelTimer { get; private set; }
         private void Start() =>
             CriticalLoad();
 

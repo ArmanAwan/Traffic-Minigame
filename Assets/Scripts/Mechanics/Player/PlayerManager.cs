@@ -11,7 +11,8 @@ namespace Jam.Mechanics.Player
 
         private Camera _cachedCamera;
         private Camera CachedCamera => _cachedCamera ??= Camera.main;
-
+        
+        private PlayerEffectSpawner EffectSpawner { get; set; }
         private PlayerVehicle Player { get; set; }
         private MoneyManager MoneyManager { get; set; }
 
@@ -27,6 +28,7 @@ namespace Jam.Mechanics.Player
 
             MoneyManager = moneyManager;
             gameManager.LevelStartEvent += () => { Player.ResetTransform(); };
+            EffectSpawner = GetComponent<PlayerEffectSpawner>();
         }
 
         private void Update()
@@ -49,10 +51,16 @@ namespace Jam.Mechanics.Player
             Player.SetMoveLocation(clickLocation);
         }
 
-        private void RegisterEnemyCollision() =>
+        private void RegisterEnemyCollision(Collider otherCollider)
+        {
             MoneyManager.CurrentScore -= 10000;
+            EffectSpawner.SpawnEnemyDeathEffect(otherCollider.transform.position);
+        }
 
-        private void RegisterMoneyCollision(int money) =>
+        private void RegisterMoneyCollision(Collider otherCollider, int money)
+        {
             MoneyManager.CurrentScore += money;
+            EffectSpawner.SpawnMoneyCollectEffect(otherCollider.transform.position);
+        }
     }
 }

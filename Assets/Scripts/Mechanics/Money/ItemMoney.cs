@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace Jam
+namespace Jam.Mechanics.Money
 {
     public class ItemMoney : MonoBehaviour
     {
@@ -24,15 +21,7 @@ namespace Jam
             GetComponent<MeshFilter>().mesh = moneyMesh;
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            CollectEffect();
-        }
-
-        private void CollectEffect()
-        {
+        private void OnTriggerEnter(Collider other) =>
             MoneyPool.Release(this);
-            //TODO: Make effect
-        }
     }
 }
