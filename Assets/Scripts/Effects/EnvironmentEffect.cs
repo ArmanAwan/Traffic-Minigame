@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace Jam.Effects
 {
@@ -19,6 +20,7 @@ namespace Jam.Effects
             if (!SoundEffect) return;
             AudioSource audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.clip = SoundEffect;
+            audioSource.pitch = Random.Range(0.9f, 1.1f);
             audioSource.Play();
         }
 

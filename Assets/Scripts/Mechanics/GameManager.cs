@@ -30,7 +30,7 @@ namespace Jam.Mechanics
             moneyManager.Activate(this);
             gameObject.GetComponent<PlayerManager>().Activate(this, moneyManager);
             gameObject.GetComponent<EnemyManager>().Activate(this);
-            MainSoundManager = GetComponentInChildren<SoundManager>();
+            MainSoundManager = GetComponent<SoundManager>();
         }
 
         private void Update()

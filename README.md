@@ -6,3 +6,5 @@ Built for windows. Click to move.
 
 Potential bugs:  
 Can turn endlessly if clicking in adjacent, but it's not really an issue. Could probably fix using the dot product to only turn when needed, but that would be more costly.
+
+Assets produced in Bfxr or photoshop
