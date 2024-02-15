@@ -58,7 +58,7 @@ namespace Jam.UserInterface
         private async void LevelEnd()
         {
             SwitchCanvas(CanvasName.End);
-            await Task.Delay(5000);
+            await Task.Delay(4000);
             SwitchCanvas(CanvasName.Start);
         }
 
@@ -81,6 +81,15 @@ namespace Jam.UserInterface
                 default:
                     throw new ArgumentOutOfRangeException(nameof(canvasName), canvasName, null);
             }
+        }
+
+        public void ExitGame()
+        {
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            #else
+            Application.Quit();
+            #endif
         }
     }
 }

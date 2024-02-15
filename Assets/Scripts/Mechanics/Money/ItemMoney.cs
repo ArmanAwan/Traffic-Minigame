@@ -16,7 +16,7 @@ namespace Jam.Mechanics.Money
         }
         public void Activate(Mesh moneyMesh, int moneyValue, Vector3 spawnLocation)
         {
-            transform.localPosition = spawnLocation;
+            transform.position = spawnLocation;
             MoneyValue = moneyValue;
             GetComponent<MeshFilter>().mesh = moneyMesh;
         }
