@@ -16,10 +16,10 @@ namespace Jam.Effects
 
         private Transform _cachedTransform;
         private Transform CachedTransform => _cachedTransform ??= transform;
-        private void Start()
+        public void Activate(Vector3 newPosition)
         {
-            OriginalPosition = transform.position;
-            Timer += Random.Range(0f, 1f); //Start randomly along path
+            OriginalPosition = newPosition;
+            Timer += Random.Range(0f, 1f);
         }
 
         private void Update()
