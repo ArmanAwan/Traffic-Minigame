@@ -1,8 +1,5 @@
-# Traffic Jame
-Project began 12th Feb 2024 - 19:30  
-Probably spent a good day or so on it making it needlessly in depth when it should have been like 5 hours work top lol
+# Traffic Game
+Click to move and collect money while avoiding other cars
 
-Built for windows. Click to move.
+https://github.com/ArmanAwan/Traffic-Minigame/assets/7523641/951db075-bee4-40fa-aca3-40883ce8fce9
 
-Potential bugs:  
-Can turn endlessly if clicking in adjacent, but it's not really an issue. Could probably fix using the dot product to only turn when needed, but that would be more costly.
